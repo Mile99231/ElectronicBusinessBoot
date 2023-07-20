@@ -2,6 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-
+<mapper namespace="com.zretc.dao.MileLunBoDao">
+<select id="LunBo" resultType="Lunbo">
+    select id,imageurl,title from lunbo
+</select>
 </mapper>

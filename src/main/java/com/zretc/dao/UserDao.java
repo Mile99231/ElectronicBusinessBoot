@@ -9,6 +9,6 @@ import com.zretc.pojo.User;
 public interface UserDao {
     User login(String uname, String upwd);
 
-    User select(String user);
+    User select(String uname);
 
 }
