@@ -1,4 +1,4 @@
-package com.zretc.ElectronicBusinessBoot;
+package com.zretc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
