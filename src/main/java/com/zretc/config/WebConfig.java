@@ -16,6 +16,6 @@ public class WebConfig implements WebMvcConfigurer {
         String origins="*";//设置所有来源 允许设置的请求域名访问我的跨域资源,也可以配置特定的来源允许跨域
         String methods="*";//设置允许的请求方法 get post options delete .....
 
-        registry.addMapping(mapping).allowedOrigins(origins).allowedMethods(methods);
+        registry.addMapping(mapping).allowedOriginPatterns(origins).allowedMethods(methods).allowCredentials(true);
     }
 }
