@@ -1,8 +1,9 @@
 package com.zretc.dao;
 
 
-import org.springframework.core.annotation.Order;
+import com.zretc.pojo.Order;
 
 public interface OrderDao {
+//    新增订单
     public int add(Order order);
 }

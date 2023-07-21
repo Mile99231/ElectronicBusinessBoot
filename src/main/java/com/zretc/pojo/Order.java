@@ -18,6 +18,10 @@ public class Order {
 //    商品名称
     private String dname;
 
+//     商品ID
+    private int proid;
+
+
 //    商品价格
     private double dprice;
 
@@ -30,9 +34,10 @@ public class Order {
 //    用户名称
     private String duser;
 
-    public Order(String did, String dname, double dprice, int dsum, String dtime, String duser) {
+    public Order(String did, String dname, int proid, double dprice, int dsum, String dtime, String duser) {
         this.did = did;
         this.dname = dname;
+        this.proid = proid;
         this.dprice = dprice;
         this.dsum = dsum;
         this.dtime = dtime;

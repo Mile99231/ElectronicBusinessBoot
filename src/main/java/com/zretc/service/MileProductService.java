@@ -1,12 +1,11 @@
-package com.zretc.dao;
+package com.zretc.service;
 
 import com.zretc.pojo.Product;
 
 import java.util.List;
 
-public interface MileProductDao {
-    //查询全部商品
+public interface MileProductService {
     public List<Product> Shop();
-    //搜索框 根据名字 或 空查询全部
+
     public List<Product> selByName(String title);
 }

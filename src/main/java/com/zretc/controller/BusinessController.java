@@ -12,7 +12,7 @@ import java.util.Map;
 public class BusinessController {
     @Autowired
     private BusinessService businessService;
-    @RequestMapping("login")
+    @RequestMapping("login.action")
     public Map<String,Object> login(String username,String password){
         Map<String,Object> maps = new HashMap<>();
         if (businessService.userLogin(username,password)){

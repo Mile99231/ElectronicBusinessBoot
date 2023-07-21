@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zretc.dao.MileProductDao">
+    <sql id="qzd">
+        id,proid,typeid,pname,pmainimage,pdecription,price,pstock,status,createtime,updatetime
+    </sql>
+
+    <select id="Shop" resultType="Product">
+        select <include refid="qzd"/> from product
+    </select>
+
+    <select id="selByName" resultType="Product">
+        select <include refid="qzd"/> from product
+        <where>
+            <if test="title != null">
+                and pname like concat('%',#{pname},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

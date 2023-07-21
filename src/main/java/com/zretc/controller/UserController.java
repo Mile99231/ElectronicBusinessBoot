@@ -25,7 +25,7 @@ public class UserController {
         }
         return maps;
     }
-    @RequestMapping("user")
+    @RequestMapping("user.action")
     private Map<String,Object> user(String uname){
         User user = userService.user(uname);
         Map<String,Object> maps = new HashMap<>();

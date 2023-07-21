@@ -14,7 +14,7 @@ import java.util.List;
 public class MileLunBoController {
     @Autowired
     private MileLunBoService mileLunBoService;
-    @RequestMapping("a")
+    @RequestMapping("a.action")
     public List<Lunbo> sellunbo(){
         return mileLunBoService.lunbo();
 
