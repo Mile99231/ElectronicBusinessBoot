@@ -16,3 +16,8 @@ logging:
     root: info
     com.zretc: debug
     org.springframework.web: debug
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

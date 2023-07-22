@@ -1,7 +1,9 @@
 package com.zretc.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.zretc.pojo.Admin;
+import com.zretc.pojo.Business;
 import com.zretc.service.AdminService;
 import com.zretc.util.RandomValidateCodeUtil;
 import org.slf4j.Logger;
@@ -24,14 +26,20 @@ import java.util.Map;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+//    @Autowired
 //    private static Logger logger;
 
+    /**
+    * 查询所有管理员信息
+    */
     @RequestMapping("SelAdmin.action")
     public List<Admin> SelAdmin(){
 
        return adminService.SelAdmin();
     }
-
+    /**
+     * 管理员登录
+     */
     @RequestMapping("login.action")
     public Map<String,Object> login(Admin admin){
 
@@ -47,6 +55,10 @@ public class AdminController {
 
         return maps;
     }
+
+    /**
+     * 删除管理员信息
+     */
     @RequestMapping("DelAdmin.action")
     public Map<String,Object> DelAdmin(int id){
         Map<String,Object> maps=new HashMap<>();
@@ -57,8 +69,11 @@ public class AdminController {
         }
         return maps;
     }
-    @RequestMapping("UpdAdmin.action")
 
+    /**
+     * 修改管理员信息
+     */
+    @RequestMapping("UpdAdmin.action")
     public Map<String,Object> UpdAdmin(@RequestBody Admin admin){
         Map<String,Object> maps=new HashMap<>();
 
@@ -70,13 +85,59 @@ public class AdminController {
         }
         return maps;
     }
-
+    /**
+     * 添加管理员信息
+     */
     @RequestMapping("AddAdmin.action")
 
     public Map<String,Object> AddAdmin(@RequestBody Admin admin){
         Map<String,Object> maps=new HashMap<>();
 
         boolean flag = adminService.AddAdmin(admin);
+        if (flag){
+            maps.put("errorcode",0);
+        }else {
+            maps.put("errorcode",101);
+        }
+        return maps;
+    }
+    /**
+    * 查询所有商家信息
+    *
+    */
+    @RequestMapping("SelBusiness.action")
+    public Map<String,Object> SelBusiness(int currpage,int size){
+        Map<String,Object> maps=new HashMap<>();
+
+        PageInfo<Business> pages = adminService.SelBusiness(currpage,size);
+        maps.put("data",pages.getList());
+        maps.put("pages",pages.getPages());
+        maps.put("size",pages.getTotal());
+        return maps;
+    }
+
+    /**
+     * 删除商家信息
+     */
+    @RequestMapping("DelBusiness.action")
+    public Map<String,Object> DelBusiness(int id){
+        Map<String,Object> maps=new HashMap<>();
+        if (adminService.DelBusiness(id)){
+            maps.put("errorcode",0);
+        }else {
+            maps.put("errorcode",101);
+        }
+        return maps;
+    }
+
+    /**
+     * 修改商家信息
+     */
+    @RequestMapping("UpdBusiness.action")
+    public Map<String,Object> UpdBusiness(@RequestBody Business business){
+        Map<String,Object> maps=new HashMap<>();
+
+        boolean flag = adminService.UpdBusiness(business);
         if (flag){
             maps.put("errorcode",0);
         }else {
@@ -103,12 +164,12 @@ public class AdminController {
     }
 
     /**
-     * 忘记密码页面校验验证码
+     * 校验验证码
      */
     @RequestMapping(value = "/checkVerify", method = RequestMethod.POST, headers = "Accept=application/json")
     public boolean checkVerify(@RequestBody Map<String, Object> requestMap, HttpSession session) {
-        System.out.println(requestMap);
-        System.out.println(session.getId());
+//        System.out.println(requestMap);
+//        System.out.println(session.getId());
 //        69F36B37593B4617DC64FE0135729266
 //        4FDC169CFB600C09E07CBB1697F8E9BC
         try{

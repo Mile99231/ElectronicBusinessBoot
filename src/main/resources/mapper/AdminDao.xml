@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zretc.dao.AdminDao">
+    <select id="login" >
+        select username,password,name from aadmin where username=#{username} and password=#{password}
+    </select>
+    <select id="SelAdmin">
+        select id,username,password,name,sex,age,idcard,phone from aadmin
+    </select>
+    <delete id="DelAdmin">
+        delete from aadmin where id = #{id}
+    </delete>
+    <update id="UpdAdmin">
+        update aadmin
+            <set>
+                <if test="username != null">
+                    username = #{username}
+                </if>
+                <if test="password != null">
+                    password = #{password}
+                </if>
+                <if test="name != null">
+                    name = #{name}
+                </if>
+                <if test="sex != null">
+                    sex = #{sex}
+                </if>
+                <if test="age != null">
+                    age = #{age}
+                </if>
+                <if test="idcard != null">
+                    idcard = #{idcard}
+                </if>
+                <if test="phone != null">
+                    phone = #{phone}
+                </if>
+            </set>
+            where id = #{id}
+    </update>
+
+    <insert id="AddAdmin">
+        insert into aadmin(username, password, name, sex, age, idcard, phone)
+        values (#{username},#{password},#{name},#{sex},#{age},#{idcard},#{phone})
+    </insert>
+
+
+    <select id="SelBusiness">
+    select id,busername,bpassword,bname,bphone from business
+    </select>
+
+    <delete id="DelBusiness">
+        delete from business where id = #{id}
+    </delete>
+    <update id="UpdBusiness">
+        update business
+        <set>
+            <if test="busername != null">
+                busername = #{busername}
+            </if>
+            <if test="bpassword != null">
+                bpassword = #{bpassword}
+            </if>
+            <if test="bname != null">
+                bname = #{bname}
+            </if>
+            <if test="bphone != null">
+                bphone = #{bphone}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
