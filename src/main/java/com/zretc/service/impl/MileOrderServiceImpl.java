@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class MileOrderServiceImpl implements MileOrderService {
     @Autowired
@@ -36,4 +38,11 @@ public class MileOrderServiceImpl implements MileOrderService {
         Order order = new Order(did,dname,proid,price,sum,dtime,user);
         return  orderDao.add(order)>0;
     }
+
+    @Override
+    public List<Order> selOrder(String user) {
+        return orderDao.selOrder(user);
+    }
+
+
 }

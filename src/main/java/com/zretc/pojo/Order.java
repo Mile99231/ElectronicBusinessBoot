@@ -34,6 +34,8 @@ public class Order {
 //    用户名称
     private String duser;
 
+    private Product product;
+
     public Order(String did, String dname, int proid, double dprice, int dsum, String dtime, String duser) {
         this.did = did;
         this.dname = dname;
@@ -42,5 +44,16 @@ public class Order {
         this.dsum = dsum;
         this.dtime = dtime;
         this.duser = duser;
+    }
+
+    public Order(String did, String dname, int proid, double dprice, int dsum, String dtime, String duser, Product product) {
+        this.did = did;
+        this.dname = dname;
+        this.proid = proid;
+        this.dprice = dprice;
+        this.dsum = dsum;
+        this.dtime = dtime;
+        this.duser = duser;
+        this.product = product;
     }
 }

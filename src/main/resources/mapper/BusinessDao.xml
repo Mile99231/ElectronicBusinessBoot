@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zretc.dao.BusinessDao">
-<select id="login" resultType="Business">
+<select id="login" resultType="business">
     select busername,bpassword from business where busername=#{busername} and bpassword=#{bpassword}
 </select>
 </mapper>
