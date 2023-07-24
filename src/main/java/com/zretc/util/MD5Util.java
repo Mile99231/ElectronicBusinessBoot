@@ -36,10 +36,10 @@ public class MD5Util {
 		}
 	}
 
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		// 测试
 		System.out.println(MD5Util.getMd5("123456789"));
-	}*/
+	}
 
 
 }
