@@ -9,4 +9,8 @@ public interface UserService {
 
     public User user(String uname);
 
+    public boolean edit(User user);
+
+    public boolean reg(User user);
+
 }

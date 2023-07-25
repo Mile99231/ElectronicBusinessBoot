@@ -9,5 +9,23 @@
     <select id="select">
         select * from user where uname=#{uname}
     </select>
+    <update id="edit" parameterType="user">
+        update user
+        <set>
+            <if test="uname != null">
+            uname = #{uname} ,
+            </if>
+            <if test="upwd != null">
+            upwd = #{upwd} ,
+            </if>
+            <if test="avatarUrl != null">
+                avatarUrl = #{avatarUrl} ,
+            </if>
+        </set>
+        where uname = #{uname}
+    </update>
+    <insert id="reg">
+        insert into user(uname,upwd,uphone,ulasttime) VALUES(#{uname},#{upwd},#{uphone},#{ulasttime})
+    </insert>
 
 </mapper>

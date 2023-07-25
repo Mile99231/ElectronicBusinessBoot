@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zretc.dao.OrderDao">
+<insert id="add">
+    INSERT INTO `orders` (did,dname,dprice,dsum,dtime,duser,proid) VALUES (#{did},#{dname},#{dprice},#{dsum},#{dtime},#{duser},#{proid})
+</insert>
+
+    <resultMap id="OrderProductMap" type="com.zretc.pojo.Order">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="did" column="did" jdbcType="VARCHAR"/>
+        <result property="dname" column="dname" jdbcType="VARCHAR"/>
+        <result property="proid" column="proid" jdbcType="INTEGER"/>
+        <result property="dprice" column="dprice" jdbcType="DOUBLE"/>
+        <result property="dsum" column="dsum" jdbcType="INTEGER"/>
+        <result property="dtime" column="dtime" jdbcType="VARCHAR"/>
+        <result property="duser" column="duser" jdbcType="VARCHAR"/>
+            <association property="product" javaType="com.zretc.pojo.Product">
+                <id property="id" column="id" jdbcType="INTEGER"/>
+                <result property="pname" column="pname" jdbcType="VARCHAR"/>
+                <result property="pmainimage" column="pmainimage" jdbcType="VARCHAR"/>
+                <result property="price" column="price" jdbcType="FLOAT"/>
+            </association>
+    </resultMap>
+
+<select id="selOrder" resultMap="OrderProductMap">
+        select o.id,o.did,o.dname,o.proid,o.dprice,o.dsum,o.dtime,o.duser,
+       p.id,p.pname,p.pmainimage,p.price
+        from orders o inner join Product p on o.proid = p.proid where o.duser = #{user}
+</select>
+
+</mapper>
