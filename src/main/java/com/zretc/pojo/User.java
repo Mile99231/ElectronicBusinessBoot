@@ -32,6 +32,21 @@ public class User {
      * */
     private String ulasttime;
 
+    private String avatarUrl;
+
     public User(String string, String string1) {
+    }
+
+    public User(String uname, String upwd, String avatarUrl) {
+        this.uname = uname;
+        this.upwd = upwd;
+        this.avatarUrl = avatarUrl;
+    }
+
+    public User(String uname, String upwd, int uphone, String ulasttime) {
+        this.uname = uname;
+        this.upwd = upwd;
+        this.uphone = uphone;
+        this.ulasttime = ulasttime;
     }
 }

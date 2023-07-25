@@ -19,5 +19,9 @@
             </if>
         </where>
     </select>
+    
+    <select id="getByPages" resultType="Product">
+        select <include refid="qzd"/> from product
+    </select>
 
 </mapper>
