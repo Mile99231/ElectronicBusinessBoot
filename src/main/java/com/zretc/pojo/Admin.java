@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 * 管理员实体类
 * pom文件lombok注解
 * */
-@Data //Getter Setter ToString
-@AllArgsConstructor  //全参构造方法
-@NoArgsConstructor   //无参构造方法
+
 public class Admin {
     /*
      * 序号
@@ -45,13 +43,96 @@ public class Admin {
      * */
     private int phone;
 
-
-    public Admin(String string, String string1) {
+    public int getId() {
+        return id;
     }
 
-    public Admin(int anInt, String string, String string1, String string2, String string3, int anInt1, String string4, int anInt2, String string5) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public Admin() {
+    }
+
+    public Admin(int id, String username, String password, String name, String sex, int age, String idcard, int phone) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.idcard = idcard;
+        this.phone = phone;
     }
 
     public Admin(String username, String password, String name, String sex, int age, String idcard, int phone) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.idcard = idcard;
+        this.phone = phone;
+    }
+
+    public Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }

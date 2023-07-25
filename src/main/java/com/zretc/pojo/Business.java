@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /*
 * 商家实体类
 * */
@@ -14,7 +16,7 @@ public class Business {
     /*
      * 序号
      * */
-    private int id;
+    private int bid;
     /*
      * 商家用户名
      * */
@@ -31,6 +33,13 @@ public class Business {
      * 手机号
      * */
     private int bphone;
+    /*
+     * 上架商品编号
+     * */
+
+    private List<Product> products;
+
+
 
 
 

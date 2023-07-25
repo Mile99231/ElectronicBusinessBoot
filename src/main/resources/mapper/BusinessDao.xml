@@ -6,4 +6,6 @@
 <select id="login" resultType="Business">
     select busername,bpassword from business where busername=#{busername} and bpassword=#{bpassword}
 </select>
+
+
 </mapper>

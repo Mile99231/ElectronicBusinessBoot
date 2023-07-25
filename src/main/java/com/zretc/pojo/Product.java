@@ -14,11 +14,12 @@ public class Product {
     /*
      * 序号
      * */
-    private int id;
+    private int proid;
     /*
      * 商品编号
      * */
-    private int proid;
+
+    private int pid;
     /*
      * 商品类别
      * */

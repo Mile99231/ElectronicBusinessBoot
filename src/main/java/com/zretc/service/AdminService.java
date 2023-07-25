@@ -3,6 +3,8 @@ package com.zretc.service;
 import com.github.pagehelper.PageInfo;
 import com.zretc.pojo.Admin;
 import com.zretc.pojo.Business;
+import com.zretc.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,10 +29,17 @@ public interface AdminService {
      */
     //查询所有商家信息
     PageInfo<Business> SelBusiness(int pageNo,int pageSize);
-    //按id删除删除
-    boolean DelBusiness(int id);
+    //按id删除商家
+    boolean DelBusiness(int bid);
     //修改商家信息
     boolean UpdBusiness(Business business);
+    //查询商品信息
+    PageInfo<Business> busProd(int pageNo, int pageSize);
+    //查看用户信息
+    PageInfo<User> SelUser(int pageNo, int pageSize);
+    //修改用户信息
+    boolean UpdUser(User user);
 
+    boolean UpdAdminPwd(Admin admin);
 
 }

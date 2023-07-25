@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 /*
 * 用户实体类 (登录)
 * */
-@Data //Getter Setter ToString
-@AllArgsConstructor  //全参构造方法
-@NoArgsConstructor   //无参构造方法
 public class User {
     /*
      * 序号
@@ -32,6 +29,65 @@ public class User {
      * */
     private String ulasttime;
 
-    public User(String string, String string1) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUname() {
+        return uname;
+    }
+
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public String getUpwd() {
+        return upwd;
+    }
+
+    public void setUpwd(String upwd) {
+        this.upwd = upwd;
+    }
+
+    public int getUphone() {
+        return uphone;
+    }
+
+    public void setUphone(int uphone) {
+        this.uphone = uphone;
+    }
+
+    public String getUlasttime() {
+        return ulasttime;
+    }
+
+    public void setUlasttime(String ulasttime) {
+        this.ulasttime = ulasttime;
+    }
+
+    public User() {
+    }
+
+    public User(int id, String uname, String upwd, int uphone, String ulasttime) {
+        this.id = id;
+        this.uname = uname;
+        this.upwd = upwd;
+        this.uphone = uphone;
+        this.ulasttime = ulasttime;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", uname='" + uname + '\'' +
+                ", upwd='" + upwd + '\'' +
+                ", uphone=" + uphone +
+                ", ulasttime='" + ulasttime + '\'' +
+                '}';
     }
 }

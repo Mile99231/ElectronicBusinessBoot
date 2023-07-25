@@ -3,7 +3,10 @@ package com.zretc.dao;
 
 import com.zretc.pojo.Admin;
 import com.zretc.pojo.Business;
+import com.zretc.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -33,7 +36,16 @@ public interface AdminDao {
     //查询所有商家信息
     List<Business> SelBusiness();
     //按id删除删除
-    int DelBusiness(int id);
+    int DelBusiness(int bid);
     //修改商家信息
     int UpdBusiness(Business business);
+    //查看商品信息
+    List<Business> busProd();
+    //查看用户信息
+    List<User> SelUser();
+    //修改用户信息
+    int UpdUser(User user);
+
+    int UpdAdminPwd(Admin admin);
+
 }

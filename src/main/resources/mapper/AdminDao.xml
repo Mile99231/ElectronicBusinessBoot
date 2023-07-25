@@ -16,25 +16,25 @@
         update aadmin
             <set>
                 <if test="username != null">
-                    username = #{username}
+                    username = #{username},
                 </if>
                 <if test="password != null">
-                    password = #{password}
+                    password = #{password},
                 </if>
                 <if test="name != null">
-                    name = #{name}
+                    name = #{name},
                 </if>
                 <if test="sex != null">
-                    sex = #{sex}
+                    sex = #{sex},
                 </if>
-                <if test="age != null">
-                    age = #{age}
+                <if test="age != 0">
+                    age = #{age},
                 </if>
                 <if test="idcard != null">
-                    idcard = #{idcard}
+                    idcard = #{idcard},
                 </if>
-                <if test="phone != null">
-                    phone = #{phone}
+                <if test="phone != 0">
+                    phone = #{phone},
                 </if>
             </set>
             where id = #{id}
@@ -47,28 +47,72 @@
 
 
     <select id="SelBusiness">
-    select id,busername,bpassword,bname,bphone from business
+    select bid,busername,bpassword,bname,bphone from business
     </select>
 
     <delete id="DelBusiness">
-        delete from business where id = #{id}
+        delete from business where bid = #{bid}
     </delete>
     <update id="UpdBusiness">
         update business
         <set>
             <if test="busername != null">
-                busername = #{busername}
+                busername = #{busername},
             </if>
             <if test="bpassword != null">
-                bpassword = #{bpassword}
+                bpassword = #{bpassword},
             </if>
             <if test="bname != null">
-                bname = #{bname}
+                bname = #{bname},
             </if>
             <if test="bphone != null">
-                bphone = #{bphone}
+                bphone = #{bphone},
             </if>
         </set>
-        where id = #{id}
+        where bid = #{bid}
     </update>
+
+    <resultMap id="businessProduct" type="Business">
+        <id property="bid" column="bid" jdbcType="INTEGER"/>
+        <result property="bname" column="bname" jdbcType="VARCHAR"/>
+
+        <collection property="products" ofType="Product">
+            <id property="proid" column="proid" jdbcType="INTEGER"/>
+            <result property="pid" column="pid" jdbcType="INTEGER"/>
+            <result property="pname" column="pname" jdbcType="VARCHAR"/>
+            <result property="pmainimage" column="pmainimage" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="FLOAT"/>
+            <result property="pstock" column="pstock" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+
+    <select id="busProd" resultMap="businessProduct">
+        select b.bid, b.bname,p.pid,p.pname,p.pmainimage,p.price,p.pstock
+        from business b inner join product p on b.bid = p.proid
+    </select>
+
+<select id="SelUser">
+    select id,uname,upwd,uphone,ulasttime from user
+</select>
+<update id="UpdUser">
+    update user
+    <set>
+        <if test="uname != null">
+            uname = #{uname},
+        </if>
+        <if test="upwd != null">
+            upwd = #{upwd},
+        </if>
+        <if test="uphone != null">
+            uphone = #{uphone},
+        </if>
+    </set>
+    where id = #{id}
+</update>
+
+<update id="UpdAdminPwd">
+    update aadmin
+    set password = #{password}
+    where username = #{username}
+</update>
 </mapper>

@@ -1,11 +1,16 @@
 package com.zretc.service.impl;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zretc.dao.BusinessDao;
+import com.zretc.pojo.Business;
 import com.zretc.service.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Component
 public class BusinessServiceImpl implements BusinessService {
@@ -14,10 +19,11 @@ public class BusinessServiceImpl implements BusinessService {
     private BusinessDao businessDao;
     @Override
     public boolean userLogin(String uname, String upwd) {
-        if (businessDao.login(uname, upwd)!=null){
-            return true;
-        }else {
-            return false;
-        }
+
+            return businessDao.login(uname, upwd)!=null?true:false;
+
     }
+
+
+
 }

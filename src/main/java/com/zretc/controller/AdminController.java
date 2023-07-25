@@ -4,10 +4,12 @@ package com.zretc.controller;
 import com.github.pagehelper.PageInfo;
 import com.zretc.pojo.Admin;
 import com.zretc.pojo.Business;
+import com.zretc.pojo.User;
 import com.zretc.service.AdminService;
 import com.zretc.util.RandomValidateCodeUtil;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,6 +45,8 @@ public class AdminController {
     @RequestMapping("login.action")
     public Map<String,Object> login(Admin admin){
 
+        admin.setPassword(DigestUtils.md5DigestAsHex((admin.getUsername()+"{"+admin.getPassword()+"}").getBytes()));
+
         Map<String,Object> maps=new HashMap<>();
         Admin a = adminService.login(admin.getUsername(), admin.getPassword());
         if(a!=null){
@@ -60,9 +64,9 @@ public class AdminController {
      * 删除管理员信息
      */
     @RequestMapping("DelAdmin.action")
-    public Map<String,Object> DelAdmin(int id){
+    public Map<String,Object> DelAdmin(int bid){
         Map<String,Object> maps=new HashMap<>();
-        if (adminService.DelAdmin(id)){
+        if (adminService.DelAdmin(bid)){
             maps.put("errorcode",0);
         }else {
             maps.put("errorcode",101);
@@ -101,6 +105,27 @@ public class AdminController {
         }
         return maps;
     }
+    /**
+     * 修改管理员密码
+     */
+    @RequestMapping("UpdAdminPwd.action")
+
+    public Map<String,Object> UpdAdminPwd( Admin admin){
+        Map<String,Object> maps=new HashMap<>();
+
+        admin.setPassword(DigestUtils.md5DigestAsHex((admin.getUsername()+"{"+admin.getPassword()+"}").getBytes()));
+
+        boolean flag = adminService.UpdAdminPwd(admin);
+        if (flag){
+            maps.put("errorcode",0);
+        }else {
+            maps.put("errorcode",101);
+        }
+        return maps;
+    }
+
+
+
     /**
     * 查询所有商家信息
     *
@@ -142,6 +167,51 @@ public class AdminController {
             maps.put("errorcode",0);
         }else {
             maps.put("errorcode",101);
+        }
+        return maps;
+    }
+    /**
+     * 查询商品信息
+     */
+    @RequestMapping("selBusPro.action")
+    public Map<String,Object> busProd(int currpage,int size){
+        Map<String,Object> maps=new HashMap<>();
+
+        PageInfo<Business> pages = adminService.busProd(currpage,size);
+        maps.put("data",pages.getList());
+        maps.put("pages",pages.getPages());
+        maps.put("size",pages.getTotal());
+        return maps;
+    }
+    /**
+     * 查询用户信息
+     */
+    @RequestMapping("SelUser.action")
+    public Map<String,Object> SelUser(int currpage,int size){
+        Map<String,Object> maps=new HashMap<>();
+
+        PageInfo<User> pages = adminService.SelUser(currpage,size);
+        maps.put("data",pages.getList());
+        maps.put("pages",pages.getPages());
+        maps.put("size",pages.getTotal());
+        return maps;
+    }
+
+    /**
+     * 修改用户信息
+     */
+    @RequestMapping("UpdUser.action")
+    public Map<String,Object> UpdUser(@RequestBody User user){
+        System.out.println(user);
+        Map<String,Object> maps = new HashMap<>();
+
+        boolean flag = adminService.UpdUser(user);
+
+        if (flag){
+            maps.put("errorcode",0);
+        }else{
+            maps.put("errorcode",101);
+
         }
         return maps;
     }
