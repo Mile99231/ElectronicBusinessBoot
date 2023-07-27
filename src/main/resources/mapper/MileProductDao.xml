@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zretc.dao.MileProductDao">
     <sql id="qzd">
-        id,proid,typeid,pname,pmainimage,pdecription,price,pstock,status,createtime,updatetime
+        proid,typeid,pname,pmainimage,pdecription,price,pstock,status,createtime,updatetime
     </sql>
 
     <select id="Shop" resultType="Product">
