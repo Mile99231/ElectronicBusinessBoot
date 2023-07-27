@@ -29,6 +29,17 @@ public class User {
      * */
     private String ulasttime;
 
+
+    private String avatarUrl;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
     public int getId() {
         return id;
     }
@@ -89,5 +100,13 @@ public class User {
                 ", uphone=" + uphone +
                 ", ulasttime='" + ulasttime + '\'' +
                 '}';
+    }
+
+    public User(String uname, String upwd, int uphone, String ulasttime, String avatarUrl) {
+        this.uname = uname;
+        this.upwd = upwd;
+        this.uphone = uphone;
+        this.ulasttime = ulasttime;
+        this.avatarUrl = avatarUrl;
     }
 }

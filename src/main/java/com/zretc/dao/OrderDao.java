@@ -1,6 +1,7 @@
 package com.zretc.dao;
 
 
+import com.zretc.pojo.AlipayBean;
 import com.zretc.pojo.Order;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface OrderDao {
     public int add(Order order);
 
     public List<Order> selOrder(String user);
+
+    public void addap(AlipayBean alipayBean);
 }
