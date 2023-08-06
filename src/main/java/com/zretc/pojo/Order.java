@@ -1,5 +1,6 @@
 package com.zretc.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class Order {
 
 //    id
+@TableId
     private int id;
 
 //    订单号

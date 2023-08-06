@@ -1,5 +1,6 @@
 package com.zretc.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ public class Admin {
     /*
      * 序号
      * */
+    @TableId
     private int id;
     /*
      * 管理员用户名

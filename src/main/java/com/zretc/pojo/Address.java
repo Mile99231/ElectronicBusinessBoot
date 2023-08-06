@@ -1,5 +1,6 @@
 package com.zretc.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor  //全参构造方法
 @NoArgsConstructor   //无参构造方法
 public class Address {
+    @TableId
     private int id;
     private String name;
     private String sex;

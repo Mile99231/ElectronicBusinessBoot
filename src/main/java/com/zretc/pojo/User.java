@@ -1,5 +1,6 @@
 package com.zretc.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ public class User {
     /*
      * 序号
      * */
+    @TableId
     private int id;
     /*
      * 用户名

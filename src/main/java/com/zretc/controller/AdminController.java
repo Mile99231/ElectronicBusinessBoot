@@ -45,7 +45,7 @@ public class AdminController {
     @RequestMapping("login.action")
     public Map<String,Object> login(Admin admin){
 
-        admin.setPassword(DigestUtils.md5DigestAsHex((admin.getUsername()+"{"+admin.getPassword()+"}").getBytes()));
+//        admin.setPassword(DigestUtils.md5DigestAsHex((admin.getUsername()+"{"+admin.getPassword()+"}").getBytes()));
 
         Map<String,Object> maps=new HashMap<>();
         Admin a = adminService.login(admin.getUsername(), admin.getPassword());
@@ -113,7 +113,7 @@ public class AdminController {
     public Map<String,Object> UpdAdminPwd( Admin admin){
         Map<String,Object> maps=new HashMap<>();
 
-        admin.setPassword(DigestUtils.md5DigestAsHex((admin.getUsername()+"{"+admin.getPassword()+"}").getBytes()));
+//        admin.setPassword(DigestUtils.md5DigestAsHex((admin.getUsername()+"{"+admin.getPassword()+"}").getBytes()));
 
         boolean flag = adminService.UpdAdminPwd(admin);
         if (flag){

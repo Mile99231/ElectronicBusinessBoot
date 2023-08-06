@@ -29,7 +29,7 @@
 
 <select id="selOrder" resultMap="OrderProductMap">
         select o.id,o.did,o.dname,o.proid,o.dprice,o.dsum,o.dtime,o.duser,
-       p.id,p.pname,p.pmainimage,p.price
+       p.pid,p.pname,p.pmainimage,p.price
         from orders o inner join Product p on o.proid = p.proid where o.duser = #{user}
 </select>
 

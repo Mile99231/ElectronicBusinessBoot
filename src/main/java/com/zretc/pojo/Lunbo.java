@@ -1,6 +1,9 @@
 package com.zretc.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+
 public class Lunbo {
+    @TableId
     private int id;
     private String imageurl;
     private String title;
